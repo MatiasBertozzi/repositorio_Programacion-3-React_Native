@@ -9,8 +9,8 @@ const Stack = createNativeStackNavigator();
 export default function StackNavigation() {
 
 
-    <Stack.Navigation>
-        <Screen.Stack
+    <Stack.Navigator>
+        <Stack.Screen
 
         name='Registro' 
             component={Registro}
@@ -22,7 +22,7 @@ export default function StackNavigation() {
 
         />
 
-         <Screen.Stack
+         <Stack.Screen
 
         name='Login' 
             component={Login}
@@ -34,7 +34,7 @@ export default function StackNavigation() {
 
         />
 
-        <Screen.Stack
+        <Stack.Screen
          name='Tab'
             component={BottomTabs}
             options={{
@@ -43,7 +43,7 @@ export default function StackNavigation() {
         />
 
 
-    </Stack.Navigation>
+    </Stack.Navigator>
 
 
 
