@@ -51,7 +51,9 @@ lo redireccionara al login, en esta coleccion    */
             db.collection('users')
             .add({
                 owner: email,
-                username: username
+                username: username,
+                createdAt: Date.now(),
+                updatedAt: Date.now(),
             })
             .then(()=> {
                 this.props.navigation.navigate('Login')
