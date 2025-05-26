@@ -12,7 +12,7 @@ export default function StackNavigation() {
     <Stack.Navigator>
         <Stack.Screen
 
-        name='Registro' 
+            name='Registro' 
             component={Registro}
             options={
                 {
@@ -24,7 +24,7 @@ export default function StackNavigation() {
 
          <Stack.Screen
 
-        name='Login' 
+            name='Login' 
             component={Login}
             options={
                 {
@@ -35,7 +35,7 @@ export default function StackNavigation() {
         />
 
         <Stack.Screen
-         name='Tab'
+            name='Tab'
             component={BottomTabs}
             options={{
                 headerShown:false
