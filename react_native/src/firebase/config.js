@@ -2,7 +2,6 @@ import app from 'firebase/app';
 import firebase from 'firebase';
 
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyB1AsBw6jTA8bhgNeJQk3W460U4Nx0BytE",
   authDomain: "tpfinalreactnativefbm.firebaseapp.com",

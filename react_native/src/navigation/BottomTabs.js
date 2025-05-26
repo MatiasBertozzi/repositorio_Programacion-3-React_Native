@@ -12,21 +12,21 @@ a las distintas paginas- !! no se si funciona o no ya que la base de datos no es
 si el codigo no funciona, modificarlo para que funcione !! */
 
     if (props.route.params.loggedIn) {
-          <Tab.Navigation>
-        <Tab.Screnn
+          <Tab.Navigator>
+        <Tab.Screen
           name='Feed' 
                   component={Feed}
                   options={{
                     tabBarIcon: () => <FontAwesome name='home' size={24} color={'red'} />
                   }}/>
 
-         <Tab.Screnn
+         <Tab.Screen
           name='Mi perfil' 
                   component={Perfil}
                   options={{
                     tabBarIcon: () => <FontAwesome name='home' size={24} color={'red'} />
                   }}/>
-        <Tab.Screnn
+        <Tab.Screen
           name='Post' 
                   component={Post}
                   options={{
@@ -34,7 +34,7 @@ si el codigo no funciona, modificarlo para que funcione !! */
                   }}/>
 
 
-    </Tab.Navigation>
+    </Tab.Navigator>
 
     }
 
