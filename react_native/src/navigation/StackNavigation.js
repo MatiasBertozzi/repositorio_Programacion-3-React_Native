@@ -7,43 +7,30 @@ import Registro from "../screen/Registro";
 const Stack = createNativeStackNavigator();
 
 export default function StackNavigation() {
-
-
+    return(
     <Stack.Navigator>
         <Stack.Screen
-
         name='Registro' 
             component={Registro}
             options={
-                {
-                    headerShown: false
-                }
-            }
-
-        />
+                {headerShown: false}}/>
 
          <Stack.Screen
-
-        name='Login' 
+            name='Login' 
             component={Login}
             options={
-                {
-                    headerShown: false
-                }
-            }
-
-        />
+                {headerShown: false}}/>
 
         <Stack.Screen
          name='Tab'
-            component={BottomTabs}
-            options={{
-                headerShown:false
-            }}
-        />
-
+        component={BottomTabs}
+        options={{
+            headerShown:false
+            }}/>
 
     </Stack.Navigator>
+
+    )
 
 
 

@@ -1,3 +1,4 @@
+import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { FontAwesome } from '@expo/vector-icons'
 
@@ -11,7 +12,7 @@ export default function BottomTabs(props) {
 a las distintas paginas- !! no se si funciona o no ya que la base de datos no esta creada aun en el momento de escribir este codigo
 si el codigo no funciona, modificarlo para que funcione !! */
 
-    if (props.route.params.loggedIn) {
+    return(
           <Tab.Navigator>
         <Tab.Screen
           name='Feed' 
@@ -32,11 +33,9 @@ si el codigo no funciona, modificarlo para que funcione !! */
                   options={{
                     tabBarIcon: () => <FontAwesome name='home' size={24} color={'red'} />
                   }}/>
-
-
     </Tab.Navigator>
 
-    }
+        )
 
   
 }
