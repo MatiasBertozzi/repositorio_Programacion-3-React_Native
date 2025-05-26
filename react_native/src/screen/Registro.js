@@ -76,7 +76,7 @@ lo redireccionara al login, en esta coleccion    */
                 <TextInput
                     value={this.state.email}
                     onChangeText={(text) => this.setState({email: text, error:""})}
-                    keyboardType='default'
+                    keyboardType='email'
                     style={styles.input}
                     placeholder='email'
                 />
@@ -85,9 +85,10 @@ lo redireccionara al login, en esta coleccion    */
                 <TextInput
                     value={this.state.password}
                     onChangeText={(text) => this.setState({password: text})}
-                    keyboardType='default'
+                    keyboardType='password'
                     style={styles.input}
                     placeholder='contraseña'
+                    secureTextEntry={true}
                 />
                 <TextInput
                     value={this.state.username}
