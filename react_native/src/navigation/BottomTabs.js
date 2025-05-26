@@ -1,7 +1,8 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { FontAwesome } from '@expo/vector-icons'
-
+import Feed from '../screen/Feed';
+import Perfil from '../screen/Perfil';
 
 const Tab= createBottomTabNavigator();
 
@@ -27,12 +28,12 @@ si el codigo no funciona, modificarlo para que funcione !! */
                   options={{
                     tabBarIcon: () => <FontAwesome name='home' size={24} color={'red'} />
                   }}/>
-        <Tab.Screen
+        {/* <Tab.Screen
           name='Post' 
                   component={Post}
                   options={{
                     tabBarIcon: () => <FontAwesome name='home' size={24} color={'red'} />
-                  }}/>
+                  }}/> */}
     </Tab.Navigator>
 
         )
