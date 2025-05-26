@@ -20,6 +20,7 @@ si esta activa la sesion entonces la redirreccionara a Home o la pagina de inici
 caso contrario debera registrarse */
 
     componentDidMount(){
+        console.log('Monta el Registro')
         auth.onAuthStateChanged((user) => {
             if(user){
                 this.props.navigation.navigate('Tab')
