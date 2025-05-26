@@ -78,6 +78,7 @@ lo redireccionara al login, en esta coleccion    */
                     onChangeText={(text) => this.setState({email: text, error:""})}
                     keyboardType='default'
                     style={styles.input}
+                    placeholder='email'
                 />
                 <Text> {this.state.error}</Text>
 
@@ -86,12 +87,14 @@ lo redireccionara al login, en esta coleccion    */
                     onChangeText={(text) => this.setState({password: text})}
                     keyboardType='default'
                     style={styles.input}
+                    placeholder='contraseña'
                 />
                 <TextInput
                     value={this.state.username}
                     onChangeText={(text) => this.setState({username: text})}
                     keyboardType='default'
                     style={styles.input}
+                    placeholder='Nombre de usuario'
                 />
                 <TouchableOpacity onPress={()=> this.registrarUsuario(this.state.email, this.state.password, this.state.username)}>
                     <Text>Registrar usuario</Text>

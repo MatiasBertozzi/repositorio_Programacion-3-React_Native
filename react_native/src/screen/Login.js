@@ -44,9 +44,8 @@ class Login extends Component {
     render(){
         return(
             <View>
-                
                  <TouchableOpacity onPress={() => this.redireccionar()}>
-                          <Text>Login</Text>
+                          <Text>Resgistro</Text>
                         </TouchableOpacity>
 
                 <TextInput
@@ -54,12 +53,14 @@ class Login extends Component {
                     onChangeText={(text) => this.setState({email: text, error:""})}
                     keyboardType='default'
                     style={styles.input}
+                    placeholder='email'
                 />
                 <TextInput
                     value={this.state.password}
                     onChangeText={(text) => this.setState({password: text,error:""})}
                     keyboardType='default'
                     style={styles.input}
+                    placeholder='contraseña'
                 />
 
                 <Text> {this.state.error}</Text>
