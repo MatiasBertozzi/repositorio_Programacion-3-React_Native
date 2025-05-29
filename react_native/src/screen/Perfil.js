@@ -12,7 +12,7 @@ export default class Perfil extends Component {
   }
 
   componentDidMount() {
-    // Buscar datos del usuario
+    
     db.collection('users')
       .where('owner', '==', auth.currentUser.email)
       .onSnapshot((docs) => {
@@ -26,7 +26,7 @@ export default class Perfil extends Component {
         });
       });
 
-    // Buscar posteos del usuario
+    
     db.collection('posts')
       .where('email', '==', auth.currentUser.email)
       .onSnapshot((docs) => {

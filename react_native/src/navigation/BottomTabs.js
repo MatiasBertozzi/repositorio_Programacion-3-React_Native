@@ -3,7 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { FontAwesome } from '@expo/vector-icons'
 import Feed from '../screen/Feed';
 import Perfil from '../screen/Perfil';
-//import Profile from '../screen/Profile' 
+import CrearPosteo from '../screen/CrearPosteo';
+
+ 
 
 const Tab= createBottomTabNavigator();
 
@@ -29,6 +31,7 @@ si el codigo no funciona, modificarlo para que funcione !! */
                     options={{
                       tabBarIcon: () => <FontAwesome name='home' size={24} color={'red'} />
                     }}/>
+            <Tab.Screen name="Postear" component={CrearPosteo} />
         </Tab.Navigator>
 
         )
