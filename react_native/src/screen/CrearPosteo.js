@@ -22,7 +22,7 @@ export default class CrearPosteo extends Component {
         })
         .then(() => {
           this.setState({ contenido: '', error: '' });
-          this.props.navigation.navigate('Home'); 
+          this.props.navigation.navigate('Home');  
         })
         .catch((err) => {
           console.log(err);
