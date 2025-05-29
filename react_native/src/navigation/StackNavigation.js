@@ -3,6 +3,12 @@ import BottomTabs from "./BottomTabs";
 import Login from "../screen/Login";
 import Registro from "../screen/Registro";
 
+/*import Postear from "../screen/Postear";
+import Profile from "../screen/Profile";
+import ProfileComponent from "../screen/ProfileComponent";
+import FormularioRegister from "../screen/CrearPosteo";*/
+
+
 
 const Stack = createNativeStackNavigator();
 
