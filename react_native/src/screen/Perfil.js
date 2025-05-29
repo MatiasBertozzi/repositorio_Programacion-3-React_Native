@@ -25,6 +25,7 @@ export default class Perfil extends Component {
           userData: info[0]
         });
       });
+      
 
     
     db.collection('posts')
@@ -42,11 +43,13 @@ export default class Perfil extends Component {
         this.setState({ userPosts: posts });
       });
   }
+cerrarSesion() {
+  auth.signOut()
+    .then(() => console.log('Sesión cerrada'))
+    .catch((error) => console.log(error));
+}
 
-  cerrarSesion() {
-    auth.signOut();
-    this.props.navigation.navigate('Login');
-  }
+
 
   render() {
     return (
@@ -56,10 +59,6 @@ export default class Perfil extends Component {
             <Text>Email: {this.state.userData.owner}</Text>
             <Text>Username: {this.state.userData.username}</Text>
             <Text>Fecha de registro: {new Date(this.state.userData.createdAt).toLocaleString()}</Text>
-
-            <TouchableOpacity onPress={() => this.cerrarSesion()}>
-              <Text>Cerrar sesión</Text>
-            </TouchableOpacity>
 
             <Text>Mis posteos:</Text>
             {this.state.userPosts.length === 0 ? (
@@ -71,6 +70,9 @@ export default class Perfil extends Component {
                 </View>
               ))
             )}
+            <TouchableOpacity onPress={() => this.cerrarSesion()}>
+              <Text>Cerrar sesión</Text>
+            </TouchableOpacity>
           </View>
         ) : (
           <Text>Cargando perfil...</Text>

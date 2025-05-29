@@ -1,43 +1,51 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import BottomTabs from "./BottomTabs";
-import Login from "../screen/Login";
-import Registro from "../screen/Registro";
-
-/*import Postear from "../screen/Postear";
-import Profile from "../screen/Profile";
-import ProfileComponent from "../screen/ProfileComponent";
-import FormularioRegister from "../screen/CrearPosteo";*/
-
-
+import React, { Component } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Registro from '../screen/Registro';
+import Login from '../screen/Login';
+import BottomTabs from './BottomTabs';
+import { auth } from '../firebase/config';
 
 const Stack = createNativeStackNavigator();
 
-export default function StackNavigation() {
-    return(
-    <Stack.Navigator>
-        <Stack.Screen
-        name='Registro' 
-            component={Registro}
-            options={
-                {headerShown: false}}/>
+class StackNavigation extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loggedIn: false,
+      loading: true
+    };
+  }
 
-         <Stack.Screen
-            name='Login' 
-            component={Login}
-            options={
-                {headerShown: false}}/>
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ loggedIn: true, loading: false });
+      } else {
+        this.setState({ loggedIn: false, loading: false });
+      }
+    });
+  }
 
-        <Stack.Screen
-         name='Tab'
-        component={BottomTabs}
-        options={{
-            headerShown:false
-            }}/>
+  render() {
+    if (this.state.loading) {
+      return null;
+    }
 
-    </Stack.Navigator>
-
-    )
-
-
-
+    return (
+      <Stack.Navigator>
+        {
+          this.state.loggedIn ? (
+            <Stack.Screen name='BottomTabs' component={BottomTabs} options={{ headerShown: false }} />
+          ) : (
+            <>
+              <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
+              <Stack.Screen name='Registro' component={Registro} options={{ headerShown: false }} />
+            </>
+          )
+        }
+      </Stack.Navigator>
+    );
+  }
 }
+
+export default StackNavigation;

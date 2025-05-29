@@ -1,5 +1,8 @@
-import { Text, View, ActivityIndicator } from 'react-native'
-import React, { Component } from 'react'
+import { Text, View, ActivityIndicator, FlatList, TouchableOpacity } from 'react-native';
+import React, { Component } from 'react';
+import { db, auth } from '../firebase/config';
+import firebase from 'firebase';
+
 
 export default class Feed extends Component {
   constructor(props) {
@@ -8,6 +11,24 @@ export default class Feed extends Component {
     posts: [],
     loading: true
   };
+}componentDidMount() {
+  db.collection('posts')
+    .orderBy('createdAt', 'desc')
+    .onSnapshot((docs) => {
+      let posteos = [];
+
+      docs.forEach((doc) => {
+        posteos.push({
+          id: doc.id,
+          data: doc.data()
+        });
+      });
+
+      this.setState({
+        posts: posteos,
+        loading: false
+      });
+    });
 }
 
  render() {
