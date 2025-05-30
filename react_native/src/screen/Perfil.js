@@ -66,7 +66,7 @@ cerrarSesion() {
             ) : (
               this.state.userPosts.map((item) => (
                 <View key={item.id}>
-                  <Text>{item.data.contenido}</Text>
+                  <Text>- {item.data.contenido}</Text>
                 </View>
               ))
             )}
