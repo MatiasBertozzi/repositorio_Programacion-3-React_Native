@@ -67,49 +67,91 @@ lo redireccionara al login, en esta coleccion    */
 
     render(){
         return(
-            <View>
-                
-                 <TouchableOpacity onPress={() => this.redireccionar()}>
-                          <Text>Login</Text>
-                        </TouchableOpacity>
+            <View style={styles.container}>
+            <Text style={styles.titulo}>Registrarse</Text>
 
-                <TextInput
-                    value={this.state.email}
-                    onChangeText={(text) => this.setState({email: text, error:""})}
-                    keyboardType='email'
-                    style={styles.input}
-                    placeholder='email'
-                />
-                <Text> {this.state.error}</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Email"
+                keyboardType="email-address"
+                value={this.state.email}
+                onChangeText={(text) => this.setState({ email: text })}
+            />
 
-                <TextInput
-                    value={this.state.password}
-                    onChangeText={(text) => this.setState({password: text})}
-                    keyboardType='password'
-                    style={styles.input}
-                    placeholder='contraseña'
-                    secureTextEntry={true}
-                />
-                <TextInput
-                    value={this.state.username}
-                    onChangeText={(text) => this.setState({username: text})}
-                    keyboardType='default'
-                    style={styles.input}
-                    placeholder='Nombre de usuario'
-                />
-                <TouchableOpacity onPress={()=> this.registrarUsuario(this.state.email, this.state.password, this.state.username)}>
-                    <Text>Registrar usuario</Text>
-                </TouchableOpacity>
+            <TextInput
+                style={styles.input}
+                placeholder="Nombre de usuario"
+                value={this.state.username}
+                onChangeText={(text) => this.setState({ username: text })}
+            />
+
+            <TextInput
+                style={styles.input}
+                placeholder="Contraseña"
+                secureTextEntry={true}
+                value={this.state.password}
+                onChangeText={(text) => this.setState({ password: text })}
+            />
+
+            <TouchableOpacity onPress={() => this.registrarUsuario(this.state.email, this.state.password, this.state.username)} style={styles.boton}>
+                <Text style={styles.textoBoton}>Crear cuenta</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+                <Text style={styles.link}>¿Ya tenés cuenta? Iniciá sesión</Text>
+            </TouchableOpacity>
+
+            {this.state.error !== '' && <Text style={styles.error}>{this.state.error}</Text>}
             </View>
+
         )
     }
 }
 
-const styles= StyleSheet.create({
-    input:{
-        borderWidth: 1,
-        borderColor: 'pink'
-    }
-})
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
+    backgroundColor: '#ffffff'
+  },
+  titulo: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center'
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 16,
+    fontSize: 16
+  },
+  boton: {
+    backgroundColor: '#28a745',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 12
+  },
+  textoBoton: {
+    color: '#fff',
+    fontSize: 16
+  },
+  link: {
+    color: '#007AFF',
+    textAlign: 'center',
+    marginTop: 10
+  },
+  error: {
+    color: 'red',
+    marginTop: 10,
+    textAlign: 'center'
+  }
+});
+
 
 export default Registro

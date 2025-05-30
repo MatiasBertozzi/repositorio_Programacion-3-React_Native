@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { auth, db } from '../firebase/config';
 
 export default class Perfil extends Component {
@@ -53,31 +53,77 @@ cerrarSesion() {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         {this.state.userData ? (
-          <View>
-            <Text>Email: {this.state.userData.owner}</Text>
-            <Text>Username: {this.state.userData.username}</Text>
-            <Text>Fecha de registro: {new Date(this.state.userData.createdAt).toLocaleString()}</Text>
+      <View>
+      <Text style={styles.titulo}>Mi perfil</Text>
+      <Text style={styles.info}>Email: {this.state.userData.owner}</Text>
+      <Text style={styles.info}>Username: {this.state.userData.username}</Text>
+      <Text style={styles.info}>
+        Fecha de registro: {new Date(this.state.userData.createdAt).toLocaleString()}
+      </Text>
 
-            <Text>Mis posteos:</Text>
-            {this.state.userPosts.length === 0 ? (
-              <Text>No tenés posteos aún.</Text>
-            ) : (
-              this.state.userPosts.map((item) => (
-                <View key={item.id}>
-                  <Text>- {item.data.contenido}</Text>
-                </View>
-              ))
-            )}
-            <TouchableOpacity onPress={() => this.cerrarSesion()}>
-              <Text>Cerrar sesión</Text>
-            </TouchableOpacity>
+      <TouchableOpacity onPress={() => this.cerrarSesion()} style={styles.botonLogout}>
+        <Text style={styles.textoBotonLogout}>Cerrar sesión</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.subtitulo}>Mis posteos:</Text>
+      {this.state.userPosts.length === 0 ? (
+        <Text style={styles.info}>No tenés posteos aún.</Text>
+      ) : (
+        this.state.userPosts.map((item) => (
+          <View key={item.id} style={styles.post}>
+            <Text>{item.data.contenido}</Text>
           </View>
-        ) : (
-          <Text>Cargando perfil...</Text>
-        )}
-      </View>
+        ))
+      )}
+    </View>
+  ) : (
+    <Text>Cargando perfil...</Text>
+  )}
+</View>
+
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#ffffff'
+  },
+  titulo: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 16
+  },
+  info: {
+    fontSize: 16,
+    marginBottom: 8,
+    color: '#333'
+  },
+  botonLogout: {
+    backgroundColor: '#ff3b30',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 16,
+    marginBottom: 24
+  },
+  textoBotonLogout: {
+    color: '#fff',
+    fontSize: 16
+  },
+  subtitulo: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8
+  },
+  post: {
+    backgroundColor: '#f2f2f2',
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 8
+  }
+});

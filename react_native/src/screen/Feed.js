@@ -1,4 +1,4 @@
-import { Text, View, ActivityIndicator, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, ActivityIndicator, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import React, { Component } from 'react';
 import { db, auth } from '../firebase/config';
 import firebase from 'firebase';
@@ -33,9 +33,10 @@ export default class Feed extends Component {
 
  render() {
   return (
-    <View>
+    
+    <View style={styles.container}>
       {this.state.loading ? (
-        <View>
+        <View style={styles.loading}>
           <ActivityIndicator />
           <Text>Cargando posteos...</Text>
         </View>
@@ -48,10 +49,10 @@ export default class Feed extends Component {
           data={this.state.posts}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <View>
-              <Text>Autor: {item.data.email}</Text>
-              <Text>Post: {item.data.contenido}</Text>
-              <Text>Likes: {item.data.likes.length}</Text>
+            <View style={styles.postContainer}>
+              <Text style={styles.postEmail}>Autor: {item.data.email}</Text>
+              <Text style={styles.postContenido}>Post: {item.data.contenido}</Text>
+              <Text style={styles.postLikes}>Likes: {item.data.likes.length}</Text>
 
               <TouchableOpacity
                 onPress={() => {
@@ -72,7 +73,7 @@ export default class Feed extends Component {
                   }
                 }}
               >
-                <Text>
+                <Text style={styles.botonLike}>
                   {item.data.likes.includes(auth.currentUser.email)
                     ? 'Quitar Like'
                     : 'Dar Like'}
@@ -88,3 +89,41 @@ export default class Feed extends Component {
 }
 
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#ffffff'
+  },
+  loading: {
+    marginTop: 100,
+    alignItems: 'center',
+  },
+  postContainer: {
+    backgroundColor: '#eeeeee',
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 12,
+  },
+  postEmail: {
+    fontWeight: 'bold',
+    marginBottom: 4,
+    fontSize: 14,
+    color: '#000000'
+  },
+  postContenido: {
+    fontSize: 16,
+    marginBottom: 8,
+    color: '#333333'
+  },
+  postLikes: {
+    fontSize: 13,
+    color: '#666666',
+    marginBottom: 4
+  },
+  botonLike: {
+    fontSize: 14,
+    color: '#007AFF'
+  }
+});

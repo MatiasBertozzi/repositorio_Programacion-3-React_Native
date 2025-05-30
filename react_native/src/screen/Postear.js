@@ -10,7 +10,7 @@ export default class Postear extends Component{
         return(
             <View> 
                 <CrearPosteo navigation ={this.props.navigation}/>
-                </View>
+            </View>
         )
     }
 }

@@ -43,41 +43,84 @@ class Login extends Component {
     
     render(){
         return(
-            <View>
-                 <TouchableOpacity onPress={() => this.redireccionar()}>
-                          <Text>Resgistro</Text>
-                        </TouchableOpacity>
+            <View style={styles.container}>
+            <Text style={styles.titulo}>Iniciar sesión</Text>
 
-                <TextInput
-                    value={this.state.email}
-                    onChangeText={(text) => this.setState({email: text, error:""})}
-                    keyboardType='default'
-                    style={styles.input}
-                    placeholder='email'
-                />
-                <TextInput
-                    value={this.state.password}
-                    onChangeText={(text) => this.setState({password: text,error:""})}
-                    keyboardType='default'
-                    style={styles.input}
-                    placeholder='contraseña'
-                />
+            <TextInput
+                style={styles.input}
+                placeholder="Email"
+                keyboardType="email-address"
+                value={this.state.email}
+                onChangeText={(text) => this.setState({ email: text })}
+            />
 
-                <Text> {this.state.error}</Text>
-                
-                <TouchableOpacity onPress={()=> this.login(this.state.email,this.state.password)}>
-                    <Text>Registrar usuario</Text>
-                </TouchableOpacity>
+            <TextInput
+                style={styles.input}
+                placeholder="Contraseña"
+                secureTextEntry={true}
+                value={this.state.password}
+                onChangeText={(text) => this.setState({ password: text })}
+            />
+
+            <TouchableOpacity onPress={() => this.login()} style={styles.boton}>
+                <Text style={styles.textoBoton}>Ingresar</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Registro')}>
+                <Text style={styles.link}>¿No tenés cuenta? Registrate</Text>
+            </TouchableOpacity>
+
+            {this.state.error !== '' && <Text style={styles.error}>{this.state.error}</Text>}
             </View>
+
         )
     }
 }
 
-const styles= StyleSheet.create({
-    input:{
-        borderWidth: 1,
-        borderColor: 'pink'
-    }
-})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
+    backgroundColor: '#ffffff'
+  },
+  titulo: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center'
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 16,
+    fontSize: 16
+  },
+  boton: {
+    backgroundColor: '#007AFF',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 12
+  },
+  textoBoton: {
+    color: '#fff',
+    fontSize: 16
+  },
+  link: {
+    color: '#007AFF',
+    textAlign: 'center',
+    marginTop: 10
+  },
+  error: {
+    color: 'red',
+    marginTop: 10,
+    textAlign: 'center'
+  }
+});
+
 
 export default Login
+
