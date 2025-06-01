@@ -7,7 +7,7 @@ export default class Perfil extends Component {
     super(props);
     this.state = {
       userData: null,
-      userPosts: [],
+      userPosts: []
     };
   }
 
@@ -40,16 +40,27 @@ export default class Perfil extends Component {
           });
         });
 
-        this.setState({ userPosts: posts });
+        this.setState({ userPosts: posts});
       });
-  }
+
+    }
+
 cerrarSesion() {
   auth.signOut()
     .then(() => console.log('Sesión cerrada'))
     .catch((error) => console.log(error));
 }
 
+/* userPosts es un array de objetos literarios */
 
+/* obtuve la info de la documentacion de firestore */
+borrarPost(id_post){
+  db.collection('posts')
+      .doc(id_post)
+     .delete()
+     .then(()=> console.log("El comentario se a eliminado con exito", id_post))
+     .catch((err)=>console.log("Ha ocurrido un error: " , err))
+}
 
   render() {
     return (
@@ -68,12 +79,16 @@ cerrarSesion() {
       </TouchableOpacity>
 
       <Text style={styles.subtitulo}>Mis posteos:</Text>
+
       {this.state.userPosts.length === 0 ? (
         <Text style={styles.info}>No tenés posteos aún.</Text>
       ) : (
         this.state.userPosts.map((item) => (
           <View key={item.id} style={styles.post}>
             <Text>{item.data.contenido}</Text>
+            <TouchableOpacity onPress={()=> this.borrarPost(item.id)} >
+              <Text>Borrar post</Text>
+            </TouchableOpacity>
           </View>
         ))
       )}

@@ -29,9 +29,12 @@ si el codigo no funciona, modificarlo para que funcione !! */
             name='Mi perfil' 
                     component={Perfil}
                     options={{
-                      tabBarIcon: () => <FontAwesome name='home' size={24} color={'red'} />
+                      tabBarIcon: () => <FontAwesome name='user' size={24} color={'red'} />
                     }}/>
-            <Tab.Screen name="Postear" component={CrearPosteo} />
+            <Tab.Screen name="Postear" component={CrearPosteo} 
+            options={{tabBarIcon: () => <FontAwesome name="upload" size={24} color={"red"} />}} />
+
+
         </Tab.Navigator>
 
         )
