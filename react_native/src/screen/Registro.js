@@ -35,7 +35,8 @@ caso contrario debera registrarse */
 
 /* en esta linea de codigo nosotros vamos a crear un ususario, primero se deben cunplir con las especificaciones para 
 crear un email, constraseña y nombre de usuario, una vez que se cumplan esos campos se creara el ususario, una tabla o coleccion y 
-lo redireccionara al login, en esta coleccion    */
+lo redireccionara al login, en esta coleccion */
+
     registrarUsuario(email, password, username){
         if(
             (email !== '' && password !== '' && username !== '')
@@ -63,7 +64,11 @@ lo redireccionara al login, en esta coleccion    */
           })
           .catch(err=> {console.log('err:', err),this.setState({error:err.message})})  
         }
-    }
+
+        else{if( password.length <6){this.setState({error:"La contraseña debe contener un minimo de 6 caracteres"})}
+            if(!email.includes('@') ){this.setState({error:"El email debe contener un @ o direccion de correo electronico"})}
+          if(username.length <=2){this.setState({error:"El nombre de usuario debe ser mayor a 3 caracteres"})}};
+      }
 
     render(){
         return(
@@ -75,14 +80,14 @@ lo redireccionara al login, en esta coleccion    */
                 placeholder="Email"
                 keyboardType="email-address"
                 value={this.state.email}
-                onChangeText={(text) => this.setState({ email: text })}
+                onChangeText={(text) => this.setState({ email: text ,error:""})}
             />
 
             <TextInput
                 style={styles.input}
                 placeholder="Nombre de usuario"
                 value={this.state.username}
-                onChangeText={(text) => this.setState({ username: text })}
+                onChangeText={(text) => this.setState({ username: text,error:"" })}
             />
 
             <TextInput
@@ -90,7 +95,7 @@ lo redireccionara al login, en esta coleccion    */
                 placeholder="Contraseña"
                 secureTextEntry={true}
                 value={this.state.password}
-                onChangeText={(text) => this.setState({ password: text })}
+                onChangeText={(text) => this.setState({ password: text,error:"" })}
             />
 
             <TouchableOpacity onPress={() => this.registrarUsuario(this.state.email, this.state.password, this.state.username)} style={styles.boton}>
@@ -105,9 +110,9 @@ lo redireccionara al login, en esta coleccion    */
             </View>
 
         )
-    }
-}
+    };
 
+  }
 
 const styles = StyleSheet.create({
   container: {
