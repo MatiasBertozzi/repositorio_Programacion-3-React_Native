@@ -40,6 +40,8 @@ export default class Perfil extends Component {
           });
         });
 
+        posts.sort((a, b) => b.data.createdAt - a.data.createdAt);
+
         this.setState({ userPosts: posts});
       });
 
@@ -94,51 +96,58 @@ borrarPost(id_post){
       )}
     </View>
   ) : (
-    <Text>Cargando perfil...</Text>
+    <Text style={styles.texto}>Cargando perfil...</Text>
   )}
 </View>
 
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#ffffff'
+    backgroundColor: '#0f172a'
   },
   titulo: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
+    color: 'red',
     marginBottom: 16
   },
   info: {
     fontSize: 16,
-    marginBottom: 8,
-    color: '#333'
-  },
-  botonLogout: {
-    backgroundColor: '#ff3b30',
-    padding: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginTop: 16,
-    marginBottom: 24
-  },
-  textoBotonLogout: {
-    color: '#fff',
-    fontSize: 16
+    color: '#94a3b8',
+    marginBottom: 6
   },
   subtitulo: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 8
+    color: '#38bdf8',
+    marginTop: 24,
+    marginBottom: 12
   },
   post: {
-    backgroundColor: '#f2f2f2',
-    padding: 10,
+    backgroundColor: '#1e293b',
+    padding: 12,
+    borderRadius: 10,
     marginBottom: 10,
-    borderRadius: 8
+    borderWidth: 1,
+    borderColor: '#334155'
+  },
+  botonLogout: {
+    backgroundColor: '#ef4444',
+    padding: 14,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 20
+  },
+  textoBotonLogout: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: '600'
+  },
+  texto: {
+    color: "white",
   }
 });

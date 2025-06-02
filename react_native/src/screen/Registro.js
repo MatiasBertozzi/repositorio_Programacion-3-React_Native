@@ -119,44 +119,49 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'center',
-    backgroundColor: '#ffffff'
+    backgroundColor: '#0f172a'
   },
   titulo: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    color: '#f8fafc',
+    marginBottom: 24,
     textAlign: 'center'
   },
   input: {
+    backgroundColor: '#1e293b',
+    borderColor: '#334155',
     borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    borderRadius: 8,
-    marginBottom: 16,
-    fontSize: 16
+    padding: 12,
+    borderRadius: 10,
+    color: '#f8fafc',
+    fontSize: 16,
+    marginBottom: 16
   },
   boton: {
-    backgroundColor: '#28a745',
-    padding: 12,
-    borderRadius: 8,
+    backgroundColor: '#22c55e',
+    padding: 14,
+    borderRadius: 10,
     alignItems: 'center',
     marginBottom: 12
   },
   textoBoton: {
-    color: '#fff',
-    fontSize: 16
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: '600'
   },
   link: {
-    color: '#007AFF',
+    color: '#38bdf8',
     textAlign: 'center',
-    marginTop: 10
+    marginTop: 8
   },
   error: {
-    color: 'red',
+    color: '#f87171',
     marginTop: 10,
     textAlign: 'center'
   }
 });
+
 
 
 export default Registro
