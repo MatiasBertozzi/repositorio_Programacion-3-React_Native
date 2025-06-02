@@ -66,7 +66,7 @@ lo redireccionara al login, en esta coleccion */
         }
 
         else{if( password.length <6){this.setState({error:"La contraseña debe contener un minimo de 6 caracteres"})}
-            if(!email.includes('@') ){this.setState({error:"El email debe contener un @ o direccion de correo electronico"})}
+            if(!email.includes('@') ){this.setState({error:"El email debe contener un @ o direccion de correo electronico valida"})}
           if(username.length <=2){this.setState({error:"El nombre de usuario debe ser mayor a 3 caracteres"})}};
       }
 

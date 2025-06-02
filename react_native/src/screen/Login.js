@@ -33,11 +33,24 @@ class Login extends Component {
     /* si la info de los campos es erronea, estos se limpiaran y devolvera un error, caso contrario, 
     si la info de los campos es correcta redireccionara a home o cualquier otra pagina */
 
-    login(email,pass){
-        auth.signInWithEmailAndPassword(email,pass)
-        .then((resp)=> {this.setState({loggedIn:true}),this.props.navigation.navigate('Tab',{loggedIn:true})
-})
-        .catch(error=> {this.setState({error:"credenciales no validas",email:"",password:""})})
+    login(email,password){
+         if(
+            (email !== '' && password !== '' )
+            &&
+            password.length >= 6
+            &&
+            email.includes('@') 
+            
+        ){auth.signInWithEmailAndPassword(email,password)
+        .then((resp)=> {this.setState({loggedIn:true}),this.props.navigation.navigate('Tab',{loggedIn:true})})
+        .catch(()=> {this.setState({error:"Los datos ingresados no son correctos"})} )}
+
+          else{
+            if(email == "" || password == ""){this.setState({error:"Los campos no pueden estar vacios, por favor ingrese su email y constraseña"})}
+            else{
+            if( password.length <6){this.setState({error:"La contraseña debe contener un minimo de 6 caracteres"})}
+            if(!email.includes('@') ){this.setState({error:"El email debe contener un @ o direccion de correo electronico valida"})}}}
+        
     }
 
     
@@ -51,7 +64,7 @@ class Login extends Component {
                 placeholder="Email"
                 keyboardType="email-address"
                 value={this.state.email}
-                onChangeText={(text) => this.setState({ email: text })}
+                onChangeText={(text) => this.setState({ email: text, error:"" })}
             />
 
             <TextInput
@@ -59,10 +72,11 @@ class Login extends Component {
                 placeholder="Contraseña"
                 secureTextEntry={true}
                 value={this.state.password}
-                onChangeText={(text) => this.setState({ password: text })}
+                onChangeText={(text) => this.setState({ password: text,error:"" })}
             />
+                  {this.state.error !== '' && <Text style={styles.error}>{this.state.error}</Text>}
 
-            <TouchableOpacity onPress={() => this.login()} style={styles.boton}>
+            <TouchableOpacity onPress={() => this.login(this.state.email, this.state.password)} style={styles.boton}>
                 <Text style={styles.textoBoton}>Ingresar</Text>
             </TouchableOpacity>
 
@@ -70,7 +84,7 @@ class Login extends Component {
                 <Text style={styles.link}>¿No tenés cuenta? Registrate</Text>
             </TouchableOpacity>
 
-            {this.state.error !== '' && <Text style={styles.error}>{this.state.error}</Text>}
+            
             </View>
 
         )
