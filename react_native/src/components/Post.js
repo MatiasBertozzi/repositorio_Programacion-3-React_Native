@@ -69,10 +69,10 @@ borrarPost(id_post){
             data={this.state.userPosts}
             keyExtractor={item=>item.id}
             renderItem={({item})=>
-                <View style={styles.post} >
-                    <Text> {item.data.contenido}</Text>
+                <View style={styles.postContainer} >
+                    <Text style={styles.postContenido}> {item.data.contenido}</Text>
                     <TouchableOpacity onPress={()=> this.borrarPost(item.id)} >
-                         <Text>Borrar post</Text>
+                         <Text style={styles.botonLike}>Borrar post</Text>
                     </TouchableOpacity>
                 </View>}/>) :
 
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     color: '#94a3b8', // gris claro
     marginBottom: 6
   },
-  botonLike: {
+   botonLike: {
     fontSize: 15,
     color: '#3b82f6',
     fontWeight: '600',
