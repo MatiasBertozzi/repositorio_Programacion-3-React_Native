@@ -69,7 +69,7 @@ borrarPost(id_post){
             data={this.state.userPosts}
             keyExtractor={item=>item.id}
             renderItem={({item})=>
-                <View style={styles.post}>
+                <View style={styles.post} >
                     <Text> {item.data.contenido}</Text>
                     <TouchableOpacity onPress={()=> this.borrarPost(item.id)} >
                          <Text>Borrar post</Text>

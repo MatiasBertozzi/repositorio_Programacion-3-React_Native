@@ -41,6 +41,8 @@ export default class Perfil extends Component {
           });
         });
 
+        posts.sort(function(a,b){return a.data.createdAt - b.data.createdAt})
+
         this.setState({ userPosts: posts});
       });
 
@@ -58,7 +60,7 @@ cerrarSesion() {
     return (
       <View style={styles.container}>
         {this.state.userData ? (
-      <View>
+      <View style={styles.container}>
       <Text style={styles.titulo}>Mi perfil</Text>
       <Text style={styles.info}>Email: {this.state.userData.owner}</Text>
       <Text style={styles.info}>Username: {this.state.userData.username}</Text>
@@ -75,7 +77,7 @@ cerrarSesion() {
       {this.state.userPosts.length === 0 ? (
         <Text style={styles.info}>No tenés posteos aún.</Text>
       ) : (
-
+        
           <Post userPosts={this.state.userPosts} perfil={true}  style={styles.post}/>
 
       )}
