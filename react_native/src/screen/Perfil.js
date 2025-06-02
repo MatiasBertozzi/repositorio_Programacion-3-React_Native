@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { auth, db } from '../firebase/config';
+import Post from '../components/Post';
 
 export default class Perfil extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ export default class Perfil extends Component {
 
         this.setState({ userPosts: posts});
       });
+      posts.sort((a,b) => b.data.createdAt - a.data.createdAt)
 
     }
 
@@ -54,15 +56,6 @@ cerrarSesion() {
 }
 
 /* userPosts es un array de objetos literarios */
-
-/* obtuve la info de la documentacion de firestore */
-borrarPost(id_post){
-  db.collection('posts')
-      .doc(id_post)
-     .delete()
-     .then(()=> console.log("El comentario se a eliminado con exito", id_post))
-     .catch((err)=>console.log("Ha ocurrido un error: " , err))
-}
 
   render() {
     return (
@@ -85,14 +78,9 @@ borrarPost(id_post){
       {this.state.userPosts.length === 0 ? (
         <Text style={styles.info}>No tenés posteos aún.</Text>
       ) : (
-        this.state.userPosts.map((item) => (
-          <View key={item.id} style={styles.post}>
-            <Text>{item.data.contenido}</Text>
-            <TouchableOpacity onPress={()=> this.borrarPost(item.id)} >
-              <Text>Borrar post</Text>
-            </TouchableOpacity>
-          </View>
-        ))
+
+          <Post userPosts={this.state.userPosts} perfil={true}  style={styles.post}/>
+
       )}
     </View>
   ) : (

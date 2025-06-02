@@ -2,7 +2,7 @@ import { Text, View, ActivityIndicator, FlatList, TouchableOpacity, StyleSheet }
 import React, { Component } from 'react';
 import { db, auth } from '../firebase/config';
 import firebase from 'firebase';
-
+import Post from '../components/Post';
 
 export default class Feed extends Component {
   constructor(props) {
@@ -45,44 +45,9 @@ export default class Feed extends Component {
           <Text>No hay posteos todavía.</Text>
         </View>
       ) : (
-        <FlatList
-          data={this.state.posts}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.postContainer}>
-              <Text style={styles.postEmail}>Autor: {item.data.email}</Text>
-              <Text style={styles.postContenido}>Post: {item.data.contenido}</Text>
-              <Text style={styles.postLikes}>Likes: {item.data.likes.length}</Text>
 
-              <TouchableOpacity
-                onPress={() => {
-                  let email = auth.currentUser.email;
-
-                  if (item.data.likes.includes(email)) {
-                    db.collection('posts')
-                      .doc(item.id)
-                      .update({
-                        likes: firebase.firestore.FieldValue.arrayRemove(email)
-                      });
-                  } else {
-                    db.collection('posts')
-                      .doc(item.id)
-                      .update({
-                        likes: firebase.firestore.FieldValue.arrayUnion(email)
-                      });
-                  }
-                }}
-              >
-                <Text style={styles.botonLike}>
-                  {item.data.likes.includes(auth.currentUser.email)
-                    ? 'Quitar Like'
-                    : 'Dar Like'}
-                </Text>
-              </TouchableOpacity>
-
-            </View>
-          )}
-        />
+        <Post posts={this.state.posts} perfil={false} />
+      
       )}
     </View>
   );
