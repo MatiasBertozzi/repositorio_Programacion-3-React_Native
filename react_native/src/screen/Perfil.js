@@ -45,7 +45,8 @@ export default class Perfil extends Component {
 
         this.setState({ userPosts: posts});
       });
-      posts.sort((a,b) => b.data.createdAt - a.data.createdAt)
+     
+
 
     }
 

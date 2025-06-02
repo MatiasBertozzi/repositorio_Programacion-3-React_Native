@@ -124,69 +124,42 @@ borrarPost(id_post){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#ffffff'
+    padding: 16,
+    backgroundColor: '#0f172a'  // azul oscuro tipo app moderna
   },
-  titulo: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 16
-  },
-  info: {
-    fontSize: 16,
-    marginBottom: 8,
-    color: '#333'
-  },
-   loading: {
+  loading: {
     marginTop: 100,
     alignItems: 'center',
   },
-  botonLogout: {
-    backgroundColor: '#ff3b30',
-    padding: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginTop: 16,
-    marginBottom: 24
-  },
-  textoBotonLogout: {
-    color: '#fff',
-    fontSize: 16
-  },
-  subtitulo: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 8
-  },
-  post: {
-    backgroundColor: '#f2f2f2',
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 8
-  },
-   postContainer: {
-    backgroundColor: '#eeeeee',
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 12,
+  postContainer: {
+    backgroundColor: '#1e293b', // tarjeta azul intermedia
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#334155'
   },
   postEmail: {
-    fontWeight: 'bold',
-    marginBottom: 4,
     fontSize: 14,
-    color: '#000000'
+    fontWeight: 'bold',
+    color: '#38bdf8',  // celeste fuerte
+    marginBottom: 6,
   },
   postContenido: {
     fontSize: 16,
-    marginBottom: 8,
-    color: '#333333'
-  },  postLikes: {
+    color: '#f8fafc', // casi blanco
+    marginBottom: 10,
+    lineHeight: 22
+  },
+  postLikes: {
     fontSize: 13,
-    color: '#666666',
-    marginBottom: 4
+    color: '#94a3b8', // gris claro
+    marginBottom: 6
   },
   botonLike: {
-    fontSize: 14,
-    color: '#007AFF'
+    fontSize: 15,
+    color: '#3b82f6',
+    fontWeight: '600',
+    paddingVertical: 6,
   }
 });
