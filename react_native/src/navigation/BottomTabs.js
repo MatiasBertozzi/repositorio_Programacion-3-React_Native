@@ -22,17 +22,32 @@ si el codigo no funciona, modificarlo para que funcione !! */
             name='Feed' 
                     component={Feed}
                     options={{
-                      tabBarIcon: () => <FontAwesome name='home' size={24} color={'red'} />
-                    }}/>
+                      headerShown:false,
+                      tabBarIcon: () => <FontAwesome name='home' size={24} color={'#FDF0D5'} />,
+                      tabBarActiveBackgroundColor:'#669BBC',
+                      tabBarInactiveBackgroundColor: "#003049",
+                      tabBarActiveTintColor:"#780000"
+                    }}
+                    />
 
           <Tab.Screen
             name='Mi perfil' 
                     component={Perfil}
                     options={{
-                      tabBarIcon: () => <FontAwesome name='user' size={24} color={'red'} />
+                      headerShown:false,
+                      tabBarIcon: () => <FontAwesome name='user' size={24} color={'#FDF0D5'} />,
+                        tabBarActiveBackgroundColor:'#669BBC',
+                      tabBarInactiveBackgroundColor: "#003049",
+                      tabBarActiveTintColor:"#780000",
                     }}/>
+                    
             <Tab.Screen name="Postear" component={CrearPosteo} 
-            options={{tabBarIcon: () => <FontAwesome name="upload" size={24} color={"red"} />}} />
+            options={{
+              headerShown:false,
+              tabBarIcon: () => <FontAwesome name="upload" size={24} color={'#FDF0D5'} />,
+              tabBarActiveBackgroundColor:'#669BBC',
+              tabBarInactiveBackgroundColor: "#003049",
+              tabBarActiveTintColor:"#780000"}} />
 
 
         </Tab.Navigator>

@@ -35,6 +35,7 @@ export default class Feed extends Component {
   return (
     
     <View style={styles.container}>
+      <Text style={styles.titulo}>Feed</Text>
       {this.state.loading ? (
         <View style={styles.loading}>
           <ActivityIndicator />
@@ -95,6 +96,12 @@ const styles = StyleSheet.create({
     color: '#3b82f6',
     fontWeight: '600',
     paddingVertical: 6,
+  },
+  titulo: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: "#669BBC",
+    marginBottom: 16
   }
 });
 
