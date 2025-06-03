@@ -39,11 +39,11 @@ export default class Feed extends Component {
       {this.state.loading ? (
         <View style={styles.loading}>
           <ActivityIndicator />
-          <Text>Cargando posteos...</Text>
+          <Text style={styles.textoF}>Cargando posteos...</Text>
         </View>
       ) : this.state.posts.length === 0 ? (
         <View>
-          <Text>No hay posteos todavía.</Text>
+          <Text style={styles.textoF}>No hay posteos todavía.</Text>
         </View>
       ) : (
 
@@ -61,6 +61,9 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     backgroundColor: '#0f172a'  // azul oscuro tipo app moderna
+  },
+  textoF: {color:"white"
+    
   },
   loading: {
     marginTop: 100,
